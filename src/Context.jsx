@@ -8,8 +8,18 @@ const AppProvider = ({ children }) => {
     const [cart, setCart] = useState();
 
     return (
-        <AppContext.Provider>
-
+        <AppContext.Provider
+            value={{
+                cart,
+            }}
+        >
+            {children}
         </AppContext.Provider>
     )
 }
+
+export const useGlobalContext = () => {
+    return useContext(AppContext)
+}
+
+export { AppContext, AppProvider }
